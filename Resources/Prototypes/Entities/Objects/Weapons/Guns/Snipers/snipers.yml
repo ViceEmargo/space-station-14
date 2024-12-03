@@ -48,6 +48,21 @@
     sprite: Objects/Weapons/Guns/Snipers/bolt_gun_wood.rsi
 
 - type: entity
+  name: Full Auto Kardashev-Mosin
+  parent: [BaseWeaponSniper, BaseGunWieldable, BaseSyndicateContraband]
+  id: WeaponSniperFullAutoMosin
+  description: BPL14 Armory. A modified mosin.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Snipers/bolt_gun_wood.rsi
+  - type: Gun
+    fireRate: 3
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+      - SemiAuto
+
+- type: entity
   name: Hristov
   parent: [BaseWeaponSniper, BaseGunWieldable, BaseSyndicateContraband]
   id: WeaponSniperHristov
