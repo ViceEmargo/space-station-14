@@ -6,7 +6,7 @@ using Robust.Shared.Containers;
 
 namespace Content.Server.Weapons.Ranged.Systems;
 
-public abstract partial class GarrisonSystem : SharedGarrisonSystem
+public sealed partial class GarrisonSystem : SharedGarrisonSystem
 {
 
     public override void Initialize()

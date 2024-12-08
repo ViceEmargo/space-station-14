@@ -13,4 +13,10 @@ public sealed partial class GarrisonComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     public ContainerSlot PilotSlot = default!;
+
+    [ViewVariables(VVAccess.ReadOnly)]
+    public readonly string PilotSlotId = "pilot-slot";
+
+    [DataField]
+    public float InsertDelay = 2;
 }
