@@ -19,6 +19,25 @@
   - type: ContainerContainer
     containers:
       pilot-slot: !type:ContainerSlot
+      magazine-slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      ammo_slot:
+        name: maxim-gun-slot-component-slot-name-ammo
+        whitelist:
+          tags:
+            - Mop
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 250
+        layer:
+        - MobLayer
+        mask:
+        - MobMask
 
 - type: entity
   id: MaximGun
@@ -29,4 +48,4 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/maxim.rsi
     layers:
-    - state: maxim
+    - state: base
