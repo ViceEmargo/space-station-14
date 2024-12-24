@@ -26,29 +26,3 @@
     steps: 2
     zeroVisible: false
   - type: Appearance
-
-- type: entity
-  id: MaximMagazine
-  name: "maxim mag (.20 rifle)"
-  parent: [ BaseItem, BaseRestrictedContraband ]
-  components:
-  - type: Tag
-    tags:
-      - MagazineHeavyRifle
-  - type: Item
-    size: Small
-  - type: BallisticAmmoProvider
-    mayTransfer: true
-    capacity: 100
-  - type: ContainerContainer
-    containers:
-      ballistic-ammo: !type:Container
-  - type: Sprite
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-  - type: MagazineVisuals
-    magState: mag
-    steps: 1
-    zeroVisible: false
-  - type: Appearance

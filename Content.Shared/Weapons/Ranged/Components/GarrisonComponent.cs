@@ -19,4 +19,7 @@ public sealed partial class GarrisonComponent : Component
 
     [DataField]
     public float InsertDelay = 2;
+
+    [DataField]
+    public bool IsPiloted = false;
 }

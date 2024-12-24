@@ -15,18 +15,28 @@
     bodyType: Static
   - type: Transform
     anchored: true
+  - type: Gun
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+  - type: MagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/lmg_cock.ogg
+  - type: AmmoCounter
   - type: Garrison
   - type: ContainerContainer
     containers:
       pilot-slot: !type:ContainerSlot
       magazine-slot: !type:ContainerSlot
+  - type: Strap
+    buckleOffset: "0,0.575"
   - type: ItemSlots
     slots:
-      ammo_slot:
-        name: maxim-gun-slot-component-slot-name-ammo
+      gun_magazine:
+        name: Magazine
         whitelist:
           tags:
-            - Mop
+            - MagazineLightRifleBox
   - type: Fixtures
     fixtures:
       fix1:
