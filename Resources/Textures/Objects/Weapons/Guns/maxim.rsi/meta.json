@@ -8,17 +8,10 @@
     },
     "states": [
       {
-        "name": "base",
-        "directions": 4
+        "name": "maxim"
       },
       {
         "name": "icon"
-      },
-      {
-        "name": "mag-0"
-      },
-      {
-        "name": "loaded"
       }
     ]
   }
