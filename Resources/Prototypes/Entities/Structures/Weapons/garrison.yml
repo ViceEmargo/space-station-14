@@ -1,0 +1,64 @@
+- type: entity
+  id: GarrisonBaseGun
+  name: garrison gun
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Appearance
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Anchorable
+  - type: Pullable
+  - type: Rotatable
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: Gun
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+  - type: MagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/lmg_cock.ogg
+  - type: AmmoCounter
+  - type: Garrison
+  - type: ContainerContainer
+    containers:
+      pilot-slot: !type:ContainerSlot
+<<<<<<< HEAD
+      magazine-slot: !type:ContainerSlot
+  - type: Strap
+    buckleOffset: "0,0.575"
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        whitelist:
+          tags:
+            - MagazineLightRifleBox
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 250
+        layer:
+        - MobLayer
+        mask:
+        - MobMask
+=======
+>>>>>>> parent of 7dd97d0d0b (better sprites + itemslot)
+
+- type: entity
+  id: MaximGun
+  parent: [ GarrisonBaseGun ]
+  name: Maxim Gun
+  description: BPL14 Armory.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/maxim.rsi
+    layers:
+    - state: maxim
