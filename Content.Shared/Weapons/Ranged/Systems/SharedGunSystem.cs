@@ -126,20 +126,29 @@ public abstract partial class SharedGunSystem : EntitySystem
     private void OnShootRequest(RequestShootEvent msg, EntitySessionEventArgs args)
     {
         var user = args.SenderSession.AttachedEntity;
-
-        if (user == null ||
+        if (!msg.isGarrison)
+        {
+            if (user == null ||
             !_combatMode.IsInCombatMode(user) ||
             !TryGetGun(user.Value, out var ent, out var gun))
-        {
-            return;
+            {
+                return;
+            }
+
+            if (ent != GetEntity(msg.Gun))
+                return;
+            gun.ShootCoordinates = GetCoordinates(msg.Coordinates);
+            gun.Target = GetEntity(msg.Target);
+            AttemptShoot(user.Value, ent, gun);
         }
-
-        if (ent != GetEntity(msg.Gun))
+        var gunEntity = GetEntity(msg.Gun);
+        if (!TryGetGun(gunEntity, out var gent, out var ggun))
+            {
             return;
-
-        gun.ShootCoordinates = GetCoordinates(msg.Coordinates);
-        gun.Target = GetEntity(msg.Target);
-        AttemptShoot(user.Value, ent, gun);
+            }
+        ggun.ShootCoordinates = GetCoordinates(msg.Coordinates);
+        ggun.Target = GetEntity(msg.Target);
+        AttemptShoot(gunEntity, gent, ggun);
     }
 
     private void OnStopShootRequest(RequestStopShootEvent ev, EntitySessionEventArgs args)

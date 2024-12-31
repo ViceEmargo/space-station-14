@@ -27,7 +27,6 @@
   - type: ContainerContainer
     containers:
       pilot-slot: !type:ContainerSlot
-<<<<<<< HEAD
       magazine-slot: !type:ContainerSlot
   - type: Strap
     buckleOffset: "0,0.575"
@@ -49,8 +48,6 @@
         - MobLayer
         mask:
         - MobMask
-=======
->>>>>>> parent of 7dd97d0d0b (better sprites + itemslot)
 
 - type: entity
   id: MaximGun
@@ -61,4 +58,4 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/maxim.rsi
     layers:
-    - state: maxim
+    - state: base

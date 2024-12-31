@@ -8,10 +8,8 @@
     },
     "states": [
       {
-        "name": "maxim"
-      },
-      {
-        "name": "icon"
+        "name": "base",
+        "directions": 4
       }
     ]
   }

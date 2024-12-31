@@ -28,8 +28,5 @@ public sealed partial class GarrisonSystem : SharedGarrisonSystem
     {
         Log.Debug(args.Buckle.Owner + " is now piloting " + entity.Owner);
         entity.Comp.IsPiloted = true;
-        if (!TryComp<GunComponent>(entity, out var gunComponent))
-            return;
-        _gun.AttemptShoot(entity, gunComponent);
     }
 }
