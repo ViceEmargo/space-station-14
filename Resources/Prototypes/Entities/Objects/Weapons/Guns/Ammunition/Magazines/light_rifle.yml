@@ -118,20 +118,6 @@
     proto: CartridgeLightRifleIncendiary
 
 - type: entity
-  id: MagazineLightRifleMaxim
-  name: "pan magazine (.30 rifle)"
-  parent: BaseMagazineLightRifle
-  components:
-  - type: Tag
-    tags:
-      - MagazineLightRiflePan
-  - type: BallisticAmmoProvider
-    proto: CartridgeLightRifle
-    capacity: 96
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/maxim.rsi
-
-- type: entity
   id: MagazineLightRiflePkBox
   name: "PK munitions box (.30 rifle)"
   parent: BaseMagazineLightRifle

@@ -11,6 +11,7 @@ using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Buckle.Components;
+using Content.Shared.CombatMode;
 using System;
 
 namespace Content.Client.Weapons.Ranged.Systems;
@@ -36,13 +37,17 @@ public sealed partial class GarrisonSystem : SharedGarrisonSystem
 
         if (!_timing.IsFirstTimePredicted)
             return;
-
         var useKey = EngineKeyFunctions.Use;
 
         var entityNull = _player.LocalEntity;
 
         if (entityNull == null)
             return;
+
+        if (!TryComp<CombatModeComponent>(entityNull, out var combat) || !combat.IsInCombatMode)
+        {
+            return;
+        }
 
         var entity = entityNull.Value;
 

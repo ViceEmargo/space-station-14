@@ -101,12 +101,17 @@
   name: "magazine maxim (.20 rifle)"
   parent: BaseMagazineRifle
   components:
+  - type: Tag
+    tags:
+      - MagazineMaxim
   - type: BallisticAmmoProvider
     proto: CartridgeRifle
+    capacity: 250
   - type: Sprite
     sprite: Objects\Weapons\Guns\Ammunition\Magazine\Rifle\maxim.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
+    - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
+

@@ -832,6 +832,9 @@
 - type: Tag
   id: MagazineGrenade
 
+- type: Tag
+  id: MagazineMaxim
+
 # Magazines end
 
 - type: Tag

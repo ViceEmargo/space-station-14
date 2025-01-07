@@ -16,6 +16,8 @@
   - type: Transform
     anchored: true
   - type: Gun
+    minAngle: 10
+    maxAngle: 16
     selectedMode: FullAuto
     availableModes:
       - FullAuto
@@ -36,7 +38,7 @@
         name: Magazine
         whitelist:
           tags:
-            - MagazineLightRifleBox
+            - MagazineMaxim
   - type: Fixtures
     fixtures:
       fix1:
