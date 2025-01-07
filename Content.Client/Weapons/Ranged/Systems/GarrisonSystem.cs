@@ -11,6 +11,7 @@ using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Buckle.Components;
+using System;
 
 namespace Content.Client.Weapons.Ranged.Systems;
 
@@ -38,11 +39,6 @@ public sealed partial class GarrisonSystem : SharedGarrisonSystem
 
         var useKey = EngineKeyFunctions.Use;
 
-        if (_inputSystem.CmdStates.GetState(useKey) != BoundKeyState.Down)
-        {
-            return;
-        }
-
         var entityNull = _player.LocalEntity;
 
         if (entityNull == null)
@@ -60,6 +56,16 @@ public sealed partial class GarrisonSystem : SharedGarrisonSystem
         if (!TryComp<GunComponent>(buckle.BuckledTo, out var gun))
             return;
 
+        if (_inputSystem.CmdStates.GetState(useKey) != BoundKeyState.Down)
+        {
+            if (gun.ShotCounter != 0) { }
+                EntityManager.RaisePredictiveEvent(new RequestStopShootEvent { Gun = GetNetEntity(gun.Owner), IsGarrison = true });
+            return;
+        }
+
+        if (gun.NextFire > _timing.CurTime)
+            return;
+
         var mousePos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);
 
         NetEntity? target = null;
@@ -75,6 +81,7 @@ public sealed partial class GarrisonSystem : SharedGarrisonSystem
             Gun = GetNetEntity(gun.Owner),
             isGarrison = true
         });
+        Log.Debug($"Sending shoot request tick {_timing.CurTick} / {_timing.CurTime}");
 
     }
 }

@@ -9,4 +9,5 @@ namespace Content.Shared.Weapons.Ranged.Events;
 public sealed class RequestStopShootEvent : EntityEventArgs
 {
     public NetEntity Gun;
+    public bool IsGarrison = false;
 }

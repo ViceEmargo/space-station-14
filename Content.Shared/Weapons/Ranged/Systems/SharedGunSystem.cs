@@ -141,31 +141,41 @@ public abstract partial class SharedGunSystem : EntitySystem
             gun.Target = GetEntity(msg.Target);
             AttemptShoot(user.Value, ent, gun);
         }
+
         var gunEntity = GetEntity(msg.Gun);
-        if (!TryGetGun(gunEntity, out var gent, out var ggun))
+        if ( user == null || !TryGetGun(gunEntity, out var gent, out var ggun))
             {
             return;
             }
         ggun.ShootCoordinates = GetCoordinates(msg.Coordinates);
         ggun.Target = GetEntity(msg.Target);
-        AttemptShoot(gunEntity, gent, ggun);
+        AttemptShoot(user.Value, gent, ggun);
     }
 
     private void OnStopShootRequest(RequestStopShootEvent ev, EntitySessionEventArgs args)
     {
         var gunUid = GetEntity(ev.Gun);
-
-        if (args.SenderSession.AttachedEntity == null ||
-            !TryComp<GunComponent>(gunUid, out var gun) ||
-            !TryGetGun(args.SenderSession.AttachedEntity.Value, out _, out var userGun))
+        if (!ev.IsGarrison)
         {
+            if (args.SenderSession.AttachedEntity == null ||
+                        !TryComp<GunComponent>(gunUid, out var gun) ||
+                        !TryGetGun(args.SenderSession.AttachedEntity.Value, out _, out var userGun))
+            {
+                return;
+            }
+
+            if (userGun != gun)
+                return;
+
+            StopShooting(gunUid, gun);
             return;
         }
 
-        if (userGun != gun)
+        if (args.SenderSession.AttachedEntity == null || !TryComp<GunComponent>(gunUid, out var ggun))
+        {
             return;
-
-        StopShooting(gunUid, gun);
+        }
+        StopShooting(gunUid, ggun);
     }
 
     public bool CanShoot(GunComponent component)
