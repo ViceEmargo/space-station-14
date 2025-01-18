@@ -63,7 +63,7 @@ public sealed partial class GarrisonSystem : SharedGarrisonSystem
 
         if (_inputSystem.CmdStates.GetState(useKey) != BoundKeyState.Down)
         {
-            if (gun.ShotCounter != 0) { }
+            if (gun.ShotCounter != 0)
                 EntityManager.RaisePredictiveEvent(new RequestStopShootEvent { Gun = GetNetEntity(gun.Owner), IsGarrison = true });
             return;
         }

@@ -142,12 +142,21 @@ public abstract partial class SharedGunSystem : EntitySystem
             AttemptShoot(user.Value, ent, gun);
         }
 
+        //garrison shooting shitcode separation
         var gunEntity = GetEntity(msg.Gun);
         if ( user == null || !TryGetGun(gunEntity, out var gent, out var ggun))
             {
             return;
             }
         ggun.ShootCoordinates = GetCoordinates(msg.Coordinates);
+        //Log.Debug(gunEntity + " world angle: " + TransformSystem.GetWorldRotation(gunEntity));
+
+        var fromMap = TransformSystem.ToMapCoordinates(Transform(user.Value).Coordinates);
+        //ggun.ShootCoordinates = TransformSystem.ToCoordinates(fromMap);
+        var toMap = TransformSystem.ToMapCoordinates(msg.Coordinates).Position;
+        var mapDirection = toMap - fromMap.Position;
+        var mapAngle = mapDirection.ToAngle();
+        Log.Debug(mapAngle.ToString());
         ggun.Target = GetEntity(msg.Target);
         AttemptShoot(user.Value, gent, ggun);
     }
